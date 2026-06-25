@@ -10,7 +10,8 @@
     <!-- Import wide modern sans-serif font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Plus+Jakarta+Sans:wght@800&display=swap"
+        rel="stylesheet">
 
     <style>
         /* Reset and Core Layout */
@@ -29,7 +30,7 @@
             overflow: hidden;
             background-color: #020205;
             color: #ffffff;
-            font-family: 'Bodoni Moda', serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         main {
@@ -117,40 +118,110 @@
             }
         }
 
-        /* Title Styling - Tall, Wide Font */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centered layout matching reference image */
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+            padding: 0 4vw;
+        }
+
+        /* Title Styling - Premium Geometric Sans-Serif */
         #title {
             margin: 0;
-            font-size: 7.5vw;
-            font-weight: 600;
-            font-style: italic;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12.2vw;
+            /* Spans ~75% of viewport width on desktop */
+            font-weight: 800;
+            /* Bold geometric weight matching reference image */
             text-transform: lowercase;
             color: #ffffff;
-            letter-spacing: 0.18em;
+            letter-spacing: -0.01em;
+            /* Tight, clean geometric letter spacing */
             text-align: center;
-            /* Stretches the font taller and wider */
-            transform: scaleX(1.12) scaleY(1.35);
             transform-style: preserve-3d;
             backface-visibility: hidden;
             white-space: nowrap;
             text-shadow:
-                0 0 20px rgba(255, 255, 255, 0.2),
-                0 0 45px rgba(255, 255, 255, 0.08);
+                0 0 20px rgba(255, 255, 255, 0.25),
+                0 0 40px rgba(0, 150, 255, 0.1);
             animation: reveal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        #tagline {
+            margin-top: 28px;
+            /* Breathing room between bold header and uppercase tagline */
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1vw;
+            font-weight: 700;
+            /* Bold solid tagline font */
+            text-transform: uppercase;
+            /* Uppercase matching reference image */
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: 0.52em;
+            /* Extremely wide letter spacing matching reference image */
+            opacity: 0;
+            text-align: center;
+            align-self: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+            animation: revealTagline 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
         }
 
         @keyframes reveal {
             0% {
                 opacity: 0;
-                letter-spacing: 0.08em;
+                letter-spacing: -0.05em;
                 filter: blur(8px);
-                transform: scaleX(1.12) scaleY(1.35) translateY(12px);
+                transform: translateY(12px);
             }
 
             100% {
                 opacity: 1;
-                letter-spacing: 0.18em;
+                letter-spacing: -0.01em;
                 filter: blur(0);
-                transform: scaleX(1.12) scaleY(1.35) translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes revealTagline {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+                filter: blur(4px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Tablet Breakpoint (spans ~90% of screen width) */
+        @media (max-width: 1024px) {
+            #title {
+                font-size: 14.5vw;
+            }
+
+            #tagline {
+                font-size: 1.8vw;
+                margin-top: 22px;
+            }
+        }
+
+        /* Mobile Breakpoint (spans ~100% of screen width) */
+        @media (max-width: 600px) {
+            #title {
+                font-size: 16.5vw;
+            }
+
+            #tagline {
+                font-size: 10px;
+                margin-top: 18px;
+                letter-spacing: 0.4em;
             }
         }
     </style>
@@ -168,7 +239,10 @@
 
     <!-- Main static classic layout -->
     <main>
-        <h1 id="title">thesignin</h1>
+        <div class="content-wrapper">
+            <h1 id="title">thesignin</h1>
+            <p id="tagline">branding soon....</p>
+        </div>
     </main>
 
     <script>

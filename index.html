@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="thesignin — a premium minimal space-themed portal.">
+    <title>thesignin</title>
+
+    <!-- Import wide modern sans-serif font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Core Layout */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #020205;
+            color: #ffffff;
+            font-family: 'Syne', sans-serif;
+        }
+
+        main {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        /* Ambient Nebulae Background Elements */
+        .nebula {
+            position: absolute;
+            width: 70vmax;
+            height: 70vmax;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: 0;
+            animation: drift 30s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+
+        #nebula-purple {
+            background: radial-gradient(circle, rgba(140, 50, 255, 0.4) 0%, transparent 70%);
+            top: -20%;
+            left: -15%;
+        }
+
+        #nebula-blue {
+            background: radial-gradient(circle, rgba(0, 120, 255, 0.35) 0%, transparent 70%);
+            bottom: -15%;
+            right: -15%;
+            animation-delay: -8s;
+        }
+
+        #nebula-teal {
+            background: radial-gradient(circle, rgba(0, 240, 200, 0.25) 0%, transparent 70%);
+            top: 40%;
+            left: 45%;
+            animation-delay: -16s;
+        }
+
+        /* Twinkling Stars Starfield */
+        .star-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(8%, 8%) scale(1.1) rotate(90deg);
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.85;
+            }
+        }
+
+        /* Title Styling - Tall, Wide Font */
+        #title {
+            margin: 0;
+            font-size: 7vw;
+            font-weight: 800;
+            text-transform: lowercase;
+            color: #ffffff;
+            letter-spacing: 0.18em;
+            text-align: center;
+            /* Stretches the font taller and wider */
+            transform: scaleX(1.08) scaleY(1.35);
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            white-space: nowrap;
+            text-shadow:
+                0 0 20px rgba(255, 255, 255, 0.25),
+                0 0 40px rgba(0, 150, 255, 0.1);
+            animation: reveal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+                letter-spacing: 0.08em;
+                filter: blur(8px);
+                transform: scaleX(1.08) scaleY(1.35) translateY(12px);
+            }
+
+            100% {
+                opacity: 1;
+                letter-spacing: 0.18em;
+                filter: blur(0);
+                transform: scaleX(1.08) scaleY(1.35) translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient Nebulae background -->
+    <div class="nebula" id="nebula-purple"></div>
+    <div class="nebula" id="nebula-blue"></div>
+    <div class="nebula" id="nebula-teal"></div>
+
+    <!-- Twinkling starfield backdrop -->
+    <div class="star-field" id="star-field"></div>
+
+    <!-- Main static classic layout -->
+    <main>
+        <h1 id="title">thesignin</h1>
+    </main>
+
+    <script>
+        // Clean, dynamic injector for static twinkling star background
+        const starField = document.getElementById('star-field');
+        const starCount = 120;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+
+            const size = 0.8 + Math.random() * 1.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+
+            star.style.animationDelay = (Math.random() * 4) + 's';
+            star.style.animationDuration = (3 + Math.random() * 4) + 's';
+
+            // Randomize opacity values to create a parallax star depth effect
+            star.style.opacity = 0.15 + Math.random() * 0.7;
+
+            starField.appendChild(star);
+        }
+    </script>
+</body>
+
+</html>

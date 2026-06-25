@@ -10,7 +10,7 @@
     <!-- Import wide modern sans-serif font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
     <style>
         /* Reset and Core Layout */
@@ -29,7 +29,7 @@
             overflow: hidden;
             background-color: #020205;
             color: #ffffff;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Bodoni Moda', serif;
         }
 
         main {
@@ -120,20 +120,21 @@
         /* Title Styling - Tall, Wide Font */
         #title {
             margin: 0;
-            font-size: 7vw;
-            font-weight: 800;
+            font-size: 7.5vw;
+            font-weight: 600;
+            font-style: italic;
             text-transform: lowercase;
             color: #ffffff;
             letter-spacing: 0.18em;
             text-align: center;
             /* Stretches the font taller and wider */
-            transform: scaleX(1.08) scaleY(1.35);
+            transform: scaleX(1.12) scaleY(1.35);
             transform-style: preserve-3d;
             backface-visibility: hidden;
             white-space: nowrap;
             text-shadow:
-                0 0 20px rgba(255, 255, 255, 0.25),
-                0 0 40px rgba(0, 150, 255, 0.1);
+                0 0 20px rgba(255, 255, 255, 0.2),
+                0 0 45px rgba(255, 255, 255, 0.08);
             animation: reveal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
@@ -142,14 +143,14 @@
                 opacity: 0;
                 letter-spacing: 0.08em;
                 filter: blur(8px);
-                transform: scaleX(1.08) scaleY(1.35) translateY(12px);
+                transform: scaleX(1.12) scaleY(1.35) translateY(12px);
             }
 
             100% {
                 opacity: 1;
                 letter-spacing: 0.18em;
                 filter: blur(0);
-                transform: scaleX(1.08) scaleY(1.35) translateY(0);
+                transform: scaleX(1.12) scaleY(1.35) translateY(0);
             }
         }
     </style>
